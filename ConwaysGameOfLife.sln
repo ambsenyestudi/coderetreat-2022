@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwaysGameOfLife.Domain", "src\ConwaysGameOfLife.Domain.csproj", "{F775A59C-25EB-45D5-85ED-1A979854ECF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwaysGameOfLife.Test", "test\ConwaysGameOfLife.Test.csproj", "{AAA9CDDE-85D7-4C30-BFE4-3299C11CA16C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F775A59C-25EB-45D5-85ED-1A979854ECF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F775A59C-25EB-45D5-85ED-1A979854ECF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F775A59C-25EB-45D5-85ED-1A979854ECF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F775A59C-25EB-45D5-85ED-1A979854ECF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAA9CDDE-85D7-4C30-BFE4-3299C11CA16C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA9CDDE-85D7-4C30-BFE4-3299C11CA16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA9CDDE-85D7-4C30-BFE4-3299C11CA16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA9CDDE-85D7-4C30-BFE4-3299C11CA16C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
