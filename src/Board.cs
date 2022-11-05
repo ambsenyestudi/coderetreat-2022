@@ -9,11 +9,13 @@ namespace ConwaysGameOfLife.Domain
         public List<Cell> Cells { get; set; }
         public Board(int size, List<Cell> cells)
         {
-            if(cells.Count != Math.Pow(size , 2)) 
-            { 
-                throw new CellAmountException($"Expected cells {Math.Pow(size, 2)} and got {cells.Count}");
+            if (cells.Count != GetExpectedCellCount(size))
+            {
+                throw new CellAmountException($"Expected cells {GetExpectedCellCount(size)} and got {cells.Count}");
             }
         }
 
+        private static int GetExpectedCellCount(int size)=>
+            (int)Math.Pow(size, 2);
     }
 }
