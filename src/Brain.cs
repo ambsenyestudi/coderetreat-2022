@@ -5,7 +5,7 @@ public class Brain
 {
     public Board GetNextGeneration(Board board)
     {
-        return new Board(2, new List<Cell>
+        return new Board(board.Size, new List<Cell>
             {
                 new Cell(true),
                 new Cell(true),
