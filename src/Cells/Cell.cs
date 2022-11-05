@@ -1,4 +1,4 @@
-﻿namespace ConwaysGameOfLife.Domain
+﻿namespace ConwaysGameOfLife.Domain.Cells
 {
     public class Cell
     {

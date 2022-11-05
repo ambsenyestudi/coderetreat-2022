@@ -1,4 +1,5 @@
 using ConwaysGameOfLife.Domain;
+using ConwaysGameOfLife.Domain.Cells;
 
 namespace ConwaysGameOfLife.Test;
 

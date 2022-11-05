@@ -1,4 +1,6 @@
-﻿namespace ConwaysGameOfLife.Domain
+﻿using ConwaysGameOfLife.Domain.Cells;
+
+namespace ConwaysGameOfLife.Domain
 {
     public class Board
     {
