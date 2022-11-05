@@ -2,10 +2,10 @@
 {
     public class Cell
     {
-        public bool IsAlive { get; set; }
+        public bool IsAlive { get; }
         public Cell(bool isAlive)
         {
-
+            IsAlive = isAlive;
         }
 
     }

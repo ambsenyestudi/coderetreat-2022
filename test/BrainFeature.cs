@@ -17,6 +17,10 @@ public class BrainFeature
     {
         var brain = new Brain();
         var nextGeneration = brain.GetNextGeneration(new Board(2, new List<Cell> { new Cell(false), new Cell(true), new Cell(true), new Cell(true) }));
-        Assert.Collection(nextGeneration.Cells, x=> Assert.True(x.IsAlive));
+        Assert.Collection(nextGeneration.Cells, 
+            x => Assert.True(x.IsAlive), 
+            x => Assert.True(x.IsAlive), 
+            x => Assert.True(x.IsAlive), 
+            x => Assert.True(x.IsAlive));
     }
 }
