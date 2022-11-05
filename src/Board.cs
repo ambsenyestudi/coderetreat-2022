@@ -6,7 +6,7 @@ namespace ConwaysGameOfLife.Domain
     public class Board
     {
         
-        public List<Cell> Cells { get; set; }
+        public List<Cell> Cells { get; }
         public Board(int size, List<Cell> cells)
         {
             if (cells.Count != GetExpectedCellCount(size))
