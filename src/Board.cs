@@ -13,6 +13,7 @@ namespace ConwaysGameOfLife.Domain
             {
                 throw new CellAmountException($"Expected cells {GetExpectedCellCount(size)} and got {cells.Count}");
             }
+            Cells = cells;
         }
 
         private static int GetExpectedCellCount(int size)=>
