@@ -5,11 +5,16 @@ public class Brain
 {
     public Board GetNextGeneration(Board board)
     {
-        return new Board(board.Size, new List<Cell>
-            {
-                new Cell(true),
-                new Cell(true),
-                new Cell(true),
-                new Cell(true) });
+        var cells = new List<Cell>();
+        for (int i = 0; i < board.Cells.Count; i++)
+        {
+            cells.Add(FigureCell(board.Cells[i], board.Cells));
+        }
+        return new Board(board.Size, cells);
+    }
+
+    private Cell FigureCell(Cell cell, List<Cell> cells)
+    {
+        return new Cell(true);
     }
 }
