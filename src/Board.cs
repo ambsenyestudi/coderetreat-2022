@@ -36,7 +36,7 @@ namespace ConwaysGameOfLife.Domain
             var (x, y) = NeighbourService.To2DCoordinates(Bounds, index);
             if (index == Bounds.GetTopLeft())
             {
-                return new List<int> { ToRight(x, y), ToRightBottom(x, y), ToBottom(x, y) };
+                return new List<int> { NeighbourService.ToRight(Bounds,x, y), ToRightBottom(x, y), ToBottom(x, y) };
             }
             if (index == Bounds.GetTopRight())
             {
@@ -44,14 +44,14 @@ namespace ConwaysGameOfLife.Domain
             }
             if (index == Bounds.GetBottomLeft())
             {
-                return new List<int> { NeighbourService.ToTop(Bounds, x, y), NeighbourService.ToRightTop(Bounds,x, y), ToRight(x, y) };
+                return new List<int> { NeighbourService.ToTop(Bounds, x, y), NeighbourService.ToRightTop(Bounds,x, y), NeighbourService.ToRight(Bounds,x, y) };
             }
             if (index == Bounds.GetBottomRight())
             {
                 return new List<int> { NeighbourService.ToLeftTop(Bounds,x, y), NeighbourService.ToTop(Bounds, x, y), NeighbourService.ToLeft(Bounds,x, y) };
             }
             return new List<int> { NeighbourService.ToLeft(Bounds,x, y), NeighbourService.ToLeftTop(Bounds,x, y), 
-                NeighbourService.ToTop(Bounds, x, y), NeighbourService.ToRightTop(Bounds,x, y), ToRight(x, y), 
+                NeighbourService.ToTop(Bounds, x, y), NeighbourService.ToRightTop(Bounds,x, y), NeighbourService.ToRight(Bounds,x, y), 
                 ToRightBottom(x, y), ToBottom(x, y), ToLeftBottom(x, y)
             };
         }
@@ -66,8 +66,7 @@ namespace ConwaysGameOfLife.Domain
         private int ToRightBottom(int x, int y) => 
             (y + 1) * Bounds.Width + (x + 1);
 
-        private int ToRight(int x, int y) =>
-            y * Bounds.Width + (x + 1);
+        
 
         
         private static int GetExpectedCellCount(int size)=>
