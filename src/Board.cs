@@ -19,6 +19,16 @@ namespace ConwaysGameOfLife.Domain
             Cells = cells;
         }
 
+        public override bool Equals(object? obj)
+        {
+            if(obj is not Board other || Bounds != other.Bounds)
+            {
+                return false;
+            }
+            
+            return Cells.Select(x=>x.IsAlive).SequenceEqual(other.Cells.Select(x => x.IsAlive));
+        }
+
         private static int GetExpectedCellCount(int size)=>
             (int) Math.Pow(size, 2);
     }
