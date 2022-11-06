@@ -33,7 +33,7 @@ namespace ConwaysGameOfLife.Domain
 
         private List<int> GetNeighbours(int index)
         {
-            var (x, y) = To2DCoordinates(index);
+            var (x, y) = NeighbourService.To2DCoordinates(Bounds, index);
             if (index == Bounds.GetTopLeft())
             {
                 return new List<int> { ToRight(x, y), ToRightBottom(x, y), ToBottom(x, y) };
@@ -79,8 +79,7 @@ namespace ConwaysGameOfLife.Domain
         private int ToTop(int x, int y) =>
             (y - 1) * Bounds.Width + x;
 
-        private (int, int) To2DCoordinates(int index) =>
-            (index % Bounds.Width, index / Bounds.Width);
+        
 
         private static int GetExpectedCellCount(int size)=>
             (int) Math.Pow(size, 2);
