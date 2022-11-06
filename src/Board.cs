@@ -30,6 +30,11 @@ namespace ConwaysGameOfLife.Domain
 
         private List<int> GetNeighboursIndexes(int index)
         {
+            if (IsCorner(index))
+            {
+                return GetCornerNeighbours(index);
+            }
+
             var (x, y) = To2DCoordinates(index);
 
             var indexes = new List<int>
@@ -42,6 +47,20 @@ namespace ConwaysGameOfLife.Domain
             return indexes;
         }
 
+        private List<int> GetCornerNeighbours(int index)
+        {
+            var (x, y) = To2DCoordinates(index);
+            if (index == 0)
+            {
+                return new List<int> { ToRight(x, y), ToRightBottom(x, y), ToBottom(x, y) };
+            }
+            return new List<int>();
+        }
+
+        private bool IsCorner(int index) =>
+            index == 0 || index == Size-1 ||
+            index == Math.Pow(Size, 2) - (Size-1) || 
+            index == Math.Pow(Size, 2)-1;
         private int ToLeftBottom(int x, int y) =>
             (y + 1) * Size + (x - 1);
 
