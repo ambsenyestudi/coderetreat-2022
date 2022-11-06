@@ -54,6 +54,10 @@ namespace ConwaysGameOfLife.Domain
             {
                 return new List<int> { ToRight(x, y), ToRightBottom(x, y), ToBottom(x, y) };
             }
+            if (index == Size-1)
+            {
+                return new List<int> { ToLeft(x, y), ToLeftBottom(x, y), ToBottom(x, y) };
+            }
             return new List<int>();
         }
 
