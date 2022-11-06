@@ -21,10 +21,17 @@ namespace ConwaysGameOfLife.Test
             Assert.Equal(4, board.Cells.Count);
         }
 
-        [Fact]
-        public void GetNeighours()
+        [Theory]
+        [InlineData(0,1,2,3)]
+        public void GetNeighours(int index, params int[] exptectedIndexes)
         {
-
+            var board = new BoardBuilder().WithSize(2)
+            .WithCellStates(
+            false, true,
+            false, true).Build();
+            var neighbours = board.GetNeighours(index);
+            Assert.Equal(exptectedIndexes,
+                neighbours.Select(x => x.Id).ToArray());
         }
 
     }
