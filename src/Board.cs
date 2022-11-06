@@ -19,24 +19,28 @@ namespace ConwaysGameOfLife.Domain
             Cells = cells;
         }
 
-        public List<Cell> GetNeighours(int index)    
+        public List<Cell> GetNeighours(int index)
+        {
+            List<int> indexes = GetNeighboursIndexes(index);
+            List<Cell> neighours = Cells
+                .Where(x => indexes.Contains(x.Id))
+                .ToList();
+            return neighours;
+        }
+
+        private List<int> GetNeighboursIndexes(int index)
         {
             var (x, y) = To2DCoordinates(index);
-            
-            var indexes = new List<int> 
-            { 
+
+            var indexes = new List<int>
+            {
                 y * Size + (x-1), (y-1) * Size + (x-1), (y-1) * Size + x,
                 (y - 1) * Size + (x+1), y * Size + (x+1), (y+1) * Size + (x+1),
                 (y+1) * Size + x, (y+1) * Size + (x-1)
-            };
-            List<Cell> neighours = Cells
-                .Where(x => indexes
-                    .Where(x => x >= 0)
-                    .OrderBy(x => x)
-                    .ToList()
-                    .Contains(x.Id))
-                .ToList();
-            return neighours;
+            }.Where(x => x >= 0)
+            .OrderBy(x => x)
+            .ToList();
+            return indexes;
         }
 
         private (int, int) To2DCoordinates(int index) =>
