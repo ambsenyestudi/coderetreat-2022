@@ -7,7 +7,7 @@ namespace ConwaysGameOfLife.Domain
     {
         
         public List<Cell> Cells { get; }
-        public int Size { get; }
+        public Bounds Bounds { get; }
 
         public Board(int size, List<Cell> cells)
         {
@@ -15,7 +15,7 @@ namespace ConwaysGameOfLife.Domain
             {
                 throw new CellAmountException($"Expected cells {GetExpectedCellCount(size)} and got {cells.Count}");
             }
-            Size = size;
+            Bounds = new Bounds(size);
             Cells = cells;
         }
 
@@ -30,7 +30,7 @@ namespace ConwaysGameOfLife.Domain
 
         private List<int> GetNeighboursIndexes(int index)
         {
-            if (IsCorner(index))
+            if (Bounds.IsCorner(index))
             {
                 return GetCornerNeighbours(index);
             }
@@ -54,45 +54,42 @@ namespace ConwaysGameOfLife.Domain
             {
                 return new List<int> { ToRight(x, y), ToRightBottom(x, y), ToBottom(x, y) };
             }
-            if (index == Size-1)
+            if (index == Bounds.Width-1)
             {
                 return new List<int> { ToLeft(x, y), ToLeftBottom(x, y), ToBottom(x, y) };
             }
-            if (index == Math.Pow(Size, 2) - Size)
+            if (index == Bounds.Width * Bounds.Height - Bounds.Width)
             {
                 return new List<int> { ToTop(x, y), ToRightTop(x, y), ToRight(x, y) };
             }
             return new List<int> { ToLeftTop(x, y), ToTop(x, y), ToLeft(x, y) };
         }
 
-        private bool IsCorner(int index) =>
-            index == 0 || index == Size-1 ||
-            index == Math.Pow(Size, 2) - Size || 
-            index == Math.Pow(Size, 2)-1;
+        
         private int ToLeftBottom(int x, int y) =>
-            (y + 1) * Size + (x - 1);
+            (y + 1) * Bounds.Width + (x - 1);
 
         private int ToBottom(int x, int y) =>
-            (y + 1) * Size + x;
+            (y + 1) * Bounds.Width + x;
 
         private int ToRightBottom(int x, int y) => 
-            (y + 1) * Size + (x + 1);
+            (y + 1) * Bounds.Width + (x + 1);
 
         private int ToRight(int x, int y) =>
-            y * Size + (x + 1);
+            y * Bounds.Width + (x + 1);
 
         private int ToRightTop(int x, int y) =>
-            (y - 1) * Size + (x + 1);
+            (y - 1) * Bounds.Width + (x + 1);
 
         private int ToLeft(int x, int y) =>
-            y * Size + (x - 1);
+            y * Bounds.Width + (x - 1);
         private int ToLeftTop(int x, int y) =>
-            (y - 1) * Size + (x - 1);
+            (y - 1) * Bounds.Width + (x - 1);
         private int ToTop(int x, int y) =>
-            (y - 1) * Size + x;
+            (y - 1) * Bounds.Width + x;
 
         private (int, int) To2DCoordinates(int index) =>
-            (index % Size, index / Size);
+            (index % Bounds.Width, index / Bounds.Width);
 
         private static int GetExpectedCellCount(int size)=>
             (int) Math.Pow(size, 2);

@@ -10,7 +10,7 @@ public class Brain
         {
             cells.Add(FigureCell(board.Cells[i], board.Cells));
         }
-        return new Board(board.Size, cells);
+        return new Board(board.Bounds.Width, cells);
     }
 
     private Cell FigureCell(Cell cell, List<Cell> cells)
