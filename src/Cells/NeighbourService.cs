@@ -2,7 +2,10 @@
 {
     public class NeighbourService
     {
-        public static List<int> GetNeighboursIndexes(Bounds bounds, int index)
+        public static List<int> GetNeighboursIndexes(Bounds bounds, int index) =>
+            GetIndexes(bounds, index).OrderBy(x => x)
+                .ToList();
+        private static List<int> GetIndexes(Bounds bounds, int index)
         {
             var (x, y) = To2DCoordinates(bounds, index);
             if (index == bounds.GetTopLeft())

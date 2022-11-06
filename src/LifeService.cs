@@ -1,8 +1,10 @@
 ﻿using ConwaysGameOfLife.Domain.Cells;
 
 namespace ConwaysGameOfLife.Domain;
-public class Brain
+public class LifeService
 {
+    private readonly NeighbourService neighbourService;
+
     public Board GetNextGeneration(Board board)
     {
         var cells = new List<Cell>();

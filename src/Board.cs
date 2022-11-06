@@ -21,9 +21,7 @@ namespace ConwaysGameOfLife.Domain
 
         public List<Cell> GetNeighours(int index)
         {
-            List<int> indexes = NeighbourService.GetNeighboursIndexes(Bounds, index)
-                .OrderBy(x => x)
-                .ToList();
+            List<int> indexes = NeighbourService.GetNeighboursIndexes(Bounds, index);
 
             return Cells
                 .Where(x => indexes.Contains(x.Id))

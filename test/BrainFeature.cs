@@ -15,7 +15,7 @@ public class BrainFeature
     [Fact]
     public void AliveWhenThreeAliveNeighbours()
     {
-        var brain = new Brain();
+        var brain = new LifeService();
         var board = new BoardBuilder().WithSize(2)
             .WithCellStates(
             false, true, 
