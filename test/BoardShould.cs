@@ -22,7 +22,8 @@ namespace ConwaysGameOfLife.Test
         }
 
         [Theory]
-        [InlineData(4,0,1,2,3,5,6,7,8)]
+        [InlineData( 4, 0, 1, 2, 3, 5, 6, 7, 8)]
+        [InlineData( 0, 1, 3, 4)]
         public void GetNeighours(int index, params int[] exptectedIndexes)
         {
             var board = new BoardBuilder().WithSize(3)
