@@ -31,9 +31,9 @@ public class LifeService
             .Count();
         if(IsUnderPopulated(aliveNeighboursCount) || IsOverCrowded(aliveNeighboursCount))
         {
-            return new Cell(index, false);
+            return new Cell(false);
         }
-        return new Cell(index, true);
+        return new Cell(true);
     }
 
     private bool IsOverCrowded(int count) =>

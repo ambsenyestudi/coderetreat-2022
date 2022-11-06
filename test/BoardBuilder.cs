@@ -20,6 +20,6 @@ namespace ConwaysGameOfLife.Test
         }
         public Board Build() =>
             new Board(size,
-                cellStates.Select((x, i) => new Cell(i, x)).ToList());
+                cellStates.Select((x, i) => new Cell(x)).ToList());
     }
 }
