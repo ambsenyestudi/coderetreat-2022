@@ -14,13 +14,18 @@ namespace ConwaysGameOfLife.Test
         [Fact]
         public void HaveNeededCells()
         {
-            var board = new Board(2, new List<Cell> { 
-                new Cell(false),
-                new Cell(true), 
-                new Cell(false),
-                new Cell(true)
-            });
+            var board = new BoardBuilder().WithSize(2)
+            .WithCellStates(
+            false, true,
+            false, true).Build();
             Assert.Equal(4, board.Cells.Count);
         }
+
+        [Fact]
+        public void GetNeighours()
+        {
+
+        }
+
     }
 }

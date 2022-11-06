@@ -2,9 +2,11 @@
 {
     public class Cell
     {
+        public int Id { get; }
         public bool IsAlive { get; }
-        public Cell(bool isAlive)
+        public Cell(int id, bool isAlive)
         {
+            Id = id;
             IsAlive = isAlive;
         }
 

@@ -19,6 +19,12 @@ namespace ConwaysGameOfLife.Domain
             Cells = cells;
         }
 
+        public List<Cell> GetNeighours(int index)
+        {
+            List<Cell> neighours = new List<Cell>();
+            return neighours;
+        }
+
         private static int GetExpectedCellCount(int size)=>
             (int) Math.Pow(size, 2);
     }

@@ -16,7 +16,13 @@ public class BrainFeature
     public void AliveWhenThreeAliveNeighbours()
     {
         var brain = new Brain();
-        var nextGeneration = brain.GetNextGeneration(new Board(2, new List<Cell> { new Cell(false), new Cell(true), new Cell(true), new Cell(true) }));
+        var board = new BoardBuilder().WithSize(2)
+            .WithCellStates(
+            false, true, 
+            true, true).Build();
+
+        var nextGeneration = brain.GetNextGeneration(board);
+        
         Assert.Collection(nextGeneration.Cells, 
             x => Assert.True(x.IsAlive), 
             x => Assert.True(x.IsAlive), 

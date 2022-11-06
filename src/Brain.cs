@@ -15,6 +15,6 @@ public class Brain
 
     private Cell FigureCell(Cell cell, List<Cell> cells)
     {
-        return new Cell(true);
+        return new Cell(cell.Id, true);
     }
 }
