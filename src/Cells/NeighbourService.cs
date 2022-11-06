@@ -2,7 +2,9 @@
 {
     public class NeighbourService
     {
-        public static int ToRightBottom(Bounds bounds, int x, int y) =>
+        public static int ToBottom(Bounds bounds, int x, int y) =>
+            (y + 1) * bounds.Width + x;
+        public static int ToBottomRight(Bounds bounds, int x, int y) =>
             (y + 1) * bounds.Width + (x + 1);
         public static int ToRight(Bounds bounds, int x, int y) =>
             y * bounds.Width + (x + 1);
