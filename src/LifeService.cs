@@ -5,6 +5,11 @@ public class LifeService
 {
     private readonly NeighbourService neighbourService;
 
+    public LifeService(NeighbourService neighbourService)
+    {
+        this.neighbourService = neighbourService;
+    }
+
     public Board GetNextGeneration(Board board)
     {
         var cells = new List<Cell>();

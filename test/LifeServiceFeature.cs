@@ -3,7 +3,7 @@ using ConwaysGameOfLife.Domain.Cells;
 
 namespace ConwaysGameOfLife.Test;
 
-public class BrainFeature
+public class LifeServiceFeature
 {
     /*
      .*
@@ -15,7 +15,7 @@ public class BrainFeature
     [Fact]
     public void AliveWhenThreeAliveNeighbours()
     {
-        var brain = new LifeService();
+        var brain = new LifeService(new NeighbourService());
         var board = new BoardBuilder().WithSize(2)
             .WithCellStates(
             false, true, 
