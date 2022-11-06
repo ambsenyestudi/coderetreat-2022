@@ -62,7 +62,7 @@ namespace ConwaysGameOfLife.Domain
             {
                 return new List<int> { ToTop(x, y), ToRightTop(x, y), ToRight(x, y) };
             }
-            return new List<int>();
+            return new List<int> { ToLeftTop(x, y), ToTop(x, y), ToLeft(x, y) };
         }
 
         private bool IsCorner(int index) =>
