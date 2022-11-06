@@ -21,9 +21,26 @@ namespace ConwaysGameOfLife.Domain
 
         public List<Cell> GetNeighours(int index)    
         {
-            List<Cell> neighours = Cells.Where(x => x.Id != index).ToList();
+            var (x, y) = To2DCoordinates(index);
+            
+            var indexes = new List<int> 
+            { 
+                y * Size + (x-1), (y-1) * Size + (x-1), (y-1) * Size + x,
+                (y - 1) * Size + (x+1), y * Size + (x+1), (y+1) * Size + (x+1),
+                (y+1) * Size + x, (y+1) * Size + (x-1)
+            };
+            List<Cell> neighours = Cells
+                .Where(x => indexes
+                    .Where(x => x >= 0)
+                    .OrderBy(x => x)
+                    .ToList()
+                    .Contains(x.Id))
+                .ToList();
             return neighours;
         }
+
+        private (int, int) To2DCoordinates(int index) =>
+            (index % Size, index / Size);
 
         private static int GetExpectedCellCount(int size)=>
             (int) Math.Pow(size, 2);
