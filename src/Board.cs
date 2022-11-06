@@ -44,14 +44,14 @@ namespace ConwaysGameOfLife.Domain
             }
             if (index == Bounds.GetBottomLeft())
             {
-                return new List<int> { NeighbourService.ToTop(Bounds, x, y), ToRightTop(x, y), ToRight(x, y) };
+                return new List<int> { NeighbourService.ToTop(Bounds, x, y), NeighbourService.ToRightTop(Bounds,x, y), ToRight(x, y) };
             }
             if (index == Bounds.GetBottomRight())
             {
                 return new List<int> { NeighbourService.ToLeftTop(Bounds,x, y), NeighbourService.ToTop(Bounds, x, y), NeighbourService.ToLeft(Bounds,x, y) };
             }
             return new List<int> { NeighbourService.ToLeft(Bounds,x, y), NeighbourService.ToLeftTop(Bounds,x, y), 
-                NeighbourService.ToTop(Bounds, x, y), ToRightTop(x, y), ToRight(x, y), 
+                NeighbourService.ToTop(Bounds, x, y), NeighbourService.ToRightTop(Bounds,x, y), ToRight(x, y), 
                 ToRightBottom(x, y), ToBottom(x, y), ToLeftBottom(x, y)
             };
         }
@@ -69,12 +69,7 @@ namespace ConwaysGameOfLife.Domain
         private int ToRight(int x, int y) =>
             y * Bounds.Width + (x + 1);
 
-        private int ToRightTop(int x, int y) =>
-            (y - 1) * Bounds.Width + (x + 1);
-
-       
-          
-
+        
         private static int GetExpectedCellCount(int size)=>
             (int) Math.Pow(size, 2);
     }

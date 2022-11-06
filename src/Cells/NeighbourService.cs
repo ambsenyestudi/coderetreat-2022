@@ -2,7 +2,8 @@
 {
     public class NeighbourService
     {
-
+        public static int ToRightTop(Bounds bounds, int x, int y) =>
+            (y - 1) * bounds.Width + (x + 1);
         public static int ToLeft(Bounds bounds, int x, int y) =>
            y * bounds.Width + (x - 1);
         public static int ToLeftTop(Bounds bounds, int x, int y) =>
