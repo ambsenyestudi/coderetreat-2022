@@ -28,26 +28,10 @@ namespace ConwaysGameOfLife.Domain
             return neighours;
         }
 
-        private List<int> GetNeighboursIndexes(int index)
-        {
-            if (Bounds.IsCorner(index))
-            {
-                return GetCornerNeighbours(index);
-            }
+        private List<int> GetNeighboursIndexes(int index) =>
+             GetNeighbours(index).OrderBy(x => x).ToList();
 
-            var (x, y) = To2DCoordinates(index);
-
-            var indexes = new List<int>
-            { ToLeft(x, y), ToLeftTop(x, y), ToTop(x, y),
-                ToRightTop(x, y), ToRight(x, y), ToRightBottom(x, y),
-                ToBottom(x, y), ToLeftBottom(x, y)
-            }.Where(x => x >= 0)
-            .OrderBy(x => x)
-            .ToList();
-            return indexes;
-        }
-
-        private List<int> GetCornerNeighbours(int index)
+        private List<int> GetNeighbours(int index)
         {
             var (x, y) = To2DCoordinates(index);
             if (index == Bounds.GetTopLeft())
@@ -62,7 +46,14 @@ namespace ConwaysGameOfLife.Domain
             {
                 return new List<int> { ToTop(x, y), ToRightTop(x, y), ToRight(x, y) };
             }
-            return new List<int> { ToLeftTop(x, y), ToTop(x, y), ToLeft(x, y) };
+            if (index == Bounds.GetBottomRight())
+            {
+                return new List<int> { ToLeftTop(x, y), ToTop(x, y), ToLeft(x, y) };
+            }
+            return new List<int> { ToLeft(x, y), ToLeftTop(x, y), 
+                ToTop(x, y), ToRightTop(x, y), ToRight(x, y), 
+                ToRightBottom(x, y), ToBottom(x, y), ToLeftBottom(x, y)
+            };
         }
 
         
