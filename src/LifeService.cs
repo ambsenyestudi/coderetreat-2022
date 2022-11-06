@@ -4,6 +4,8 @@ namespace ConwaysGameOfLife.Domain;
 public class LifeService
 {
     private readonly NeighbourService neighbourService;
+    private const int MIN_ALIVE_NEIGHBOURS = 2;
+    private const int MAX_ALIVE_NEIGHBOURS = 3;
 
     public LifeService(NeighbourService neighbourService)
     {
@@ -27,7 +29,16 @@ public class LifeService
         var aliveNeighboursCount = board.Cells
             .Where((x, i) => neighboursIndexes.Contains(i) && x.IsAlive)
             .Count();
-
-        return new Cell(index, aliveNeighboursCount == 2 || aliveNeighboursCount == 3);
+        if(IsUnderPopulated(aliveNeighboursCount) || IsOverCrowded(aliveNeighboursCount))
+        {
+            return new Cell(index, false);
+        }
+        return new Cell(index, true);
     }
+
+    private bool IsOverCrowded(int count) =>
+        count > MAX_ALIVE_NEIGHBOURS;
+
+    private bool IsUnderPopulated(int count) => 
+        count < MIN_ALIVE_NEIGHBOURS;
 }
