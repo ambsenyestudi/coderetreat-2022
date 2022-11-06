@@ -2,10 +2,10 @@
 {
     public class NeighbourService
     {
-        public static List<int> GetNeighboursIndexes(Bounds bounds, int index) =>
+        public List<int> GetNeighboursIndexes(Bounds bounds, int index) =>
             GetIndexes(bounds, index).OrderBy(x => x)
                 .ToList();
-        private static List<int> GetIndexes(Bounds bounds, int index)
+        private List<int> GetIndexes(Bounds bounds, int index)
         {
             var (x, y) = To2DCoordinates(bounds, index);
             if (index == bounds.GetTopLeft())
@@ -30,23 +30,23 @@
             };
         }
 
-        public static int ToLeftBottom(Bounds bounds, int x, int y) =>
+        public int ToLeftBottom(Bounds bounds, int x, int y) =>
             (y + 1) * bounds.Width + (x - 1);
-        public static int ToBottom(Bounds bounds, int x, int y) =>
+        public int ToBottom(Bounds bounds, int x, int y) =>
             (y + 1) * bounds.Width + x;
-        public static int ToBottomRight(Bounds bounds, int x, int y) =>
+        public int ToBottomRight(Bounds bounds, int x, int y) =>
             (y + 1) * bounds.Width + (x + 1);
-        public static int ToRight(Bounds bounds, int x, int y) =>
+        public int ToRight(Bounds bounds, int x, int y) =>
             y * bounds.Width + (x + 1);
-        public static int ToTopRight(Bounds bounds, int x, int y) =>
+        public int ToTopRight(Bounds bounds, int x, int y) =>
             (y - 1) * bounds.Width + (x + 1);
-        public static int ToLeft(Bounds bounds, int x, int y) =>
+        public int ToLeft(Bounds bounds, int x, int y) =>
            y * bounds.Width + (x - 1);
-        public static int ToTopLeft(Bounds bounds, int x, int y) =>
+        public int ToTopLeft(Bounds bounds, int x, int y) =>
             (y - 1) * bounds.Width + (x - 1);
-        public static int ToTop(Bounds bounds, int x, int y) =>
+        public int ToTop(Bounds bounds, int x, int y) =>
             (y - 1) * bounds.Width + x;
-        public static (int, int) To2DCoordinates(Bounds bounds, int index) =>
+        public (int, int) To2DCoordinates(Bounds bounds, int index) =>
             (index % bounds.Width, index / bounds.Width);
     }
 }

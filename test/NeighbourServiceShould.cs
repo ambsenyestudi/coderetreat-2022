@@ -5,6 +5,8 @@ namespace ConwaysGameOfLife.Test
 {
     public class NeighbourServiceShould
     {
+        private readonly NeighbourService neighbourService = new NeighbourService();
+
         [Theory]
         [InlineData(4, 0, 1, 2, 3, 5, 6, 7, 8)]
         [InlineData(0, 1, 3, 4)]
@@ -14,7 +16,7 @@ namespace ConwaysGameOfLife.Test
         public void GetNeighours(int index, params int[] exptectedIndexes)
         {
             var bounds = new Bounds(3);
-            var neighboursIndexes = NeighbourService.GetNeighboursIndexes(bounds, index);
+            var neighboursIndexes= neighbourService.GetNeighboursIndexes(bounds, index);
             Assert.Equal(exptectedIndexes,
                 neighboursIndexes);
         }
