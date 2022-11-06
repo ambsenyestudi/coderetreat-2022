@@ -39,7 +39,7 @@ namespace ConwaysGameOfLife.Domain
 
             var indexes = new List<int>
             { ToLeft(x, y), ToLeftTop(x, y), ToTop(x, y),
-                ToTopRight(x, y), ToRight(x, y), ToRightBottom(x, y),
+                ToRightTop(x, y), ToRight(x, y), ToRightBottom(x, y),
                 ToBottom(x, y), ToLeftBottom(x, y)
             }.Where(x => x >= 0)
             .OrderBy(x => x)
@@ -58,12 +58,16 @@ namespace ConwaysGameOfLife.Domain
             {
                 return new List<int> { ToLeft(x, y), ToLeftBottom(x, y), ToBottom(x, y) };
             }
+            if (index == Math.Pow(Size, 2) - Size)
+            {
+                return new List<int> { ToTop(x, y), ToRightTop(x, y), ToRight(x, y) };
+            }
             return new List<int>();
         }
 
         private bool IsCorner(int index) =>
             index == 0 || index == Size-1 ||
-            index == Math.Pow(Size, 2) - (Size-1) || 
+            index == Math.Pow(Size, 2) - Size || 
             index == Math.Pow(Size, 2)-1;
         private int ToLeftBottom(int x, int y) =>
             (y + 1) * Size + (x - 1);
@@ -77,7 +81,7 @@ namespace ConwaysGameOfLife.Domain
         private int ToRight(int x, int y) =>
             y * Size + (x + 1);
 
-        private int ToTopRight(int x, int y) =>
+        private int ToRightTop(int x, int y) =>
             (y - 1) * Size + (x + 1);
 
         private int ToLeft(int x, int y) =>
