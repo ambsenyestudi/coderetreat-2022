@@ -50,15 +50,15 @@ namespace ConwaysGameOfLife.Domain
         private List<int> GetCornerNeighbours(int index)
         {
             var (x, y) = To2DCoordinates(index);
-            if (index == 0)
+            if (index == Bounds.GetTopLeft())
             {
                 return new List<int> { ToRight(x, y), ToRightBottom(x, y), ToBottom(x, y) };
             }
-            if (index == Bounds.Width-1)
+            if (index == Bounds.GetTopRight())
             {
                 return new List<int> { ToLeft(x, y), ToLeftBottom(x, y), ToBottom(x, y) };
             }
-            if (index == Bounds.Width * Bounds.Height - Bounds.Width)
+            if (index == Bounds.GetBottomLeft())
             {
                 return new List<int> { ToTop(x, y), ToRightTop(x, y), ToRight(x, y) };
             }
