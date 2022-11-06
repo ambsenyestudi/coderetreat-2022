@@ -22,13 +22,14 @@ namespace ConwaysGameOfLife.Test
         }
 
         [Theory]
-        [InlineData(0,1,2,3)]
+        [InlineData(4,0,1,2,3,5,6,7,8)]
         public void GetNeighours(int index, params int[] exptectedIndexes)
         {
-            var board = new BoardBuilder().WithSize(2)
+            var board = new BoardBuilder().WithSize(3)
             .WithCellStates(
-            false, true,
-            false, true).Build();
+            false, true, true,
+            false, true, false,
+            true, false, true).Build();
             var neighbours = board.GetNeighours(index);
             Assert.Equal(exptectedIndexes,
                 neighbours.Select(x => x.Id).ToArray());

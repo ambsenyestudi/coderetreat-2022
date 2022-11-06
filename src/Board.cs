@@ -19,9 +19,9 @@ namespace ConwaysGameOfLife.Domain
             Cells = cells;
         }
 
-        public List<Cell> GetNeighours(int index)
+        public List<Cell> GetNeighours(int index)    
         {
-            List<Cell> neighours = new List<Cell>();
+            List<Cell> neighours = Cells.Where(x => x.Id != index).ToList();
             return neighours;
         }
 
