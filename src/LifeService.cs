@@ -15,13 +15,19 @@ public class LifeService
         var cells = new List<Cell>();
         for (int i = 0; i < board.Cells.Count; i++)
         {
-            cells.Add(FigureCell(board.Cells[i], board.Cells));
+            cells.Add(FigureCell(i, board));
         }
         return new Board(board.Bounds.Width, cells);
     }
 
-    private Cell FigureCell(Cell cell, List<Cell> cells)
+    private Cell FigureCell(int index, Board board)
     {
-        return new Cell(cell.Id, true);
+        var neighboursIndexes = neighbourService
+            .GetNeighboursIndexes(board.Bounds, index);
+        var aliveNeighboursCount = board.Cells
+            .Where((x, i) => neighboursIndexes.Contains(i) && x.IsAlive)
+            .Count();
+
+        return new Cell(index, aliveNeighboursCount == 2 || aliveNeighboursCount == 3);
     }
 }
